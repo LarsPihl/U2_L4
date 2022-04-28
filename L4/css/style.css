@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+body {
+	user-select: none; /* Hindrar användaren från att markera text. */
+}
+
+#board {
+	background-color: #FEC;
+	border: 3px inset #FEC;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 2fr 2fr;
+	gap: 20px;
+}
+#board > div {
+	padding: 10px;
+}
+
+#wordList li {
+	cursor: move;
+}
+
+#imgList {
+	display: flex;
+	flex-direction: column;
+}
+#imgList img {
+	float: left;
+	max-width: 100px;
+	max-height: 100px;
+	border: 1px solid #333;
+	margin-right: 6px;
+	margin-bottom: 10px;
+}
+#imgList p {
+	margin: 0;
+	padding: 0;
+}
+
+.userAnswer {
+	color: #000;
+	cursor: move;
+}
+.correctAnswer {
+	color: #C00;
+	font-style: italic;
+	font-size: 0.8em;
+}
+
+@media screen and (max-width:600px) {
+	#board {
+		grid-template-columns: 1fr 2fr;
+		grid-template-rows: auto auto;
+		grid-template-areas:
+			"list images"
+			"largeimg largeimg";
+	}
+	#board div:nth-child(1) {
+		grid-area: list;
+	}
+	#board div:nth-child(2) {
+		grid-area: images;
+	}
+	#board div:nth-child(3) {
+		grid-area: largeimg;
+	}
+}
